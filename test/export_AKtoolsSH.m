@@ -2,7 +2,7 @@ addpath("~/projects_EXT/AKtools/2_Tools/SphericalHarmonics");
 
 nmax = 5;
 
-filename = ["gaussian", num2str(nmax), ".txt"];
+filename = ["coordinates_gaussian", num2str(nmax), ".txt"];
 
 cart = load(filename);
 x = cart(:,1);
@@ -26,4 +26,4 @@ for n = 0:nmax
     end    
 end
 
-save(["AK_SHgaussian" num2str(nmax) ".mat"], "-v7", "Yreal", "Ycomplex");
+save(["SH_AKtools_gaussian" num2str(nmax) ".mat"], "-v7", "Yreal", "Ycomplex");
