@@ -11,7 +11,9 @@ import numpy as np
 from HUTUBS_anywhere import get_HRTFs_fromSH
 
 # angles given in rad
-HRTFs = get_HRTFs_fromSH('./HUTUBS_HRIRs_2/pp21_SHcoefficients_simulated.mat', (1.57, 1.57, 1.57), (0, 0.79, 1.57))
-HRIRs = np.fft.rfft(HRTFs)
+theta = np.array([np.pi/2, np.pi/2, np.pi/2])
+phi = np.array([0, np.pi/4, np.pi/2])
+HRTFs, sampling_rate = get_HRTFs_fromSH('./HUTUBS_HRIRs_2/pp21_SHcoefficients_simulated.mat', theta, phi)
+HRIRs = np.fft.irfft(HRTFs)
 ```
 
