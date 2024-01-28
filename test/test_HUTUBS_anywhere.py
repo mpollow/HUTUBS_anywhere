@@ -6,10 +6,13 @@ import numpy as np
 import os
 import glob
 
+import sys
+sys.path.append('..')
+
 from HUTUBS_anywhere import *
 
 
-PATH = './HUTUBS_HRIRs'
+PATH = '../HUTUBS_HRIRs'
 
 def check_HRTF_match(SH_filename):
     SOFA_filename = SH_filename.replace('SHcoefficients', 'HRIRs').replace('.mat', '.sofa')
@@ -29,8 +32,8 @@ def test_all_HRIRs(path=PATH):
 
 def test_SH_basis():
     nmax = 5
-    cart = np.loadtxt(f'./gaussian{nmax}.txt')
-    a = loadmat(f'./AK_SHgaussian{nmax}.mat')
+    cart = np.loadtxt(f'./coordinates_gaussian{nmax}.txt')
+    a = loadmat(f'./SH_AKtools_gaussian{nmax}.mat')
     SHc_AK = a['Ycomplex']
     SHr_AK = a['Yreal']
     

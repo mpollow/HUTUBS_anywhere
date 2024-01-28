@@ -1,5 +1,17 @@
 # HUTUBS_anywhere
-This project allows to derive HRTF datasets from the HUTUBS database for any desired set of directions. It uses the HRIR representation given as SH-coefficients and converts them to a NumPy array for a given set of angles (theta, phi). 
+This project allows to derive HRTF datasets from the HUTUBS database for any desired set of directions. It uses the HRIR representation given as SH-coefficients and converts them to a NumPy array for a given set of angles (theta, phi).
 
-The folder HUTUBS_HRIRs (as used in the test function) contains the unzipped dataset of HRIRs (HRIRs.zip) as found on the project website at
-https://depositonce.tu-berlin.de/items/dc2a3076-a291-417e-97f0-7697e332c960
+The HUTUBS HRIR datasets should be placed in the folder HUTUBS_HRIRs. Download the dataset HRIRs.zip from the [HUTUBS project website](https://depositonce.tu-berlin.de/items/dc2a3076-a291-417e-97f0-7697e332c960)
+
+## Example usage:
+Use the function get_HRTFs_fromSH to get frequency-domain data for the requested directions. Here an example for getting HRIRs for the front direction, 45 degree to the left side and 90 degree to the left side.
+
+```
+import numpy as np
+from HUTUBS_anywhere import get_HRTFs_fromSH
+
+# angles given in rad
+HRTFs = get_HRTFs_fromSH('./HUTUBS_HRIRs_2/pp21_SHcoefficients_simulated.mat', (1.57, 1.57, 1.57), (0, 0.79, 1.57))
+HRIRs = np.fft.rfft(HRTFs)
+```
+

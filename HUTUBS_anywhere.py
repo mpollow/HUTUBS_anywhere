@@ -22,7 +22,7 @@ def acn2nm(acn):
     return n, m
 
 def pos2tp(pos):
-    # converts position (r, az, el) to theta and phi
+    # converts position (az, el, r) to theta and phi
     az, el, _ = pos.T
     theta = (90 - el) / 180 * np.pi
     phi = az / 180 * np.pi
